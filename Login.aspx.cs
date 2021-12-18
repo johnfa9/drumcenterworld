@@ -28,32 +28,58 @@ namespace drumcenterworld
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
+            string qry = string.Empty;
+
+            if (RadioButton1.Checked == true)   //Admin
+            {
+                //Select UserName,Password, AdminUsers.RoleID from AdminUsers  left join role on Role.RoleId = AdminUsers.RoleId where UserName='Admin1' 
+                //and Password = 'Admin1' and IsAcive = 1
+                qry = "Select UserName,Password, AdminUsers.RoleID from AdminUsers  left join role on Role.RoleId = AdminUsers.RoleId where " +
+              "UserName='" + TextBoxEmail.Text + "' and " +
+              "Password='" + TextBoxPassword.Text + "' and IsAcive=1";
+            }
+            else
+            {
+                qry = "Select Email , UserPassword, Role.RoleID from Users left join role on Role.RoleId = Users.RoleId where " +
+              "Email='" + TextBoxEmail.Text + "' and " +
+              "UserPassword='" + TextBoxPassword.Text + "'";
+
+            }
+                
+            
             //Login User
-            SqlDataAdapter da = new SqlDataAdapter("Select * from Users left join role on Role.RoleId = Users.RoleId where " +
-               "Email='" + TextBoxEmail.Text + "' and " +
-               "UserPassword='" + TextBoxPassword.Text + "'", con); ;
+            SqlDataAdapter da = new SqlDataAdapter(qry, con); ;
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
                 Label1.Text = "Login Successfull";
                 //Save the role for a successful login
-                int RoleId = dt.Rows[0]["RoleId"] != null ? Convert.ToInt32(dt.Rows[0]["RoleId"]) : -1;
+                int RoleId = Convert.ToInt32(dt.Rows[0]["RoleId"]);
+                //!= null ? Convert.ToInt32(dt.Rows[0]["RoleId"]) : -1;
+                Session["UserInfo"] = TextBoxEmail.Text;
+                System.Web.HttpContext.Current.Session["Role"] = dt.Rows[0]["RoleID"];
+                Session["RoleID"] = dt.Rows[0]["RoleID"].ToString();
                 var menu = Page.Master.FindControl("Menu1") as Menu;
                 if (RoleId == 1)
                 {
                     //menu.Items.Add(new MenuItem("Tab1", "5"));
                     //MenuItem mnuItem = menu.FindItem("Add Product");
-                  // menu.Items.RemoveAt(2);
-                   // menu.Items.RemoveAt(1);
+                    // menu.Items.RemoveAt(2);
+                    // menu.Items.RemoveAt(1);
                     //menu.Items.Add(4);
+                    Response.Redirect("~/Products.aspx");
                 }
-                
-                System.Web.HttpContext.Current.Session["Role"] = dt.Rows[0]["RoleID"];
-                Response.Redirect("~/Products.aspx");
+                else
+                {
+                    Response.Redirect("~/Products.aspx");
+                    //Response.Redirect("~/Admin/AddProduct.aspx");
+                }
             }
             else
             {
+                TextBoxEmail.Text = "";
+                TextBoxPassword.Text = "";
                 Label1.Text = "Login Unsuccessfull";
             }
         }

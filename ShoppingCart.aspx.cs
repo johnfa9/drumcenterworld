@@ -80,6 +80,20 @@ namespace drumcenterworld
 
         protected void ButtonCheckOut_Click1(object sender, EventArgs e)
         {
+            double TotalCost = 0;
+
+            if (ListBox1.Items.Count > 0)
+            {
+                for (int i=0;i<ListBox1.Items.Count;i++)
+                {
+
+                }
+            }
+            else
+            {
+                Response.Write("Cart Is Empty");
+            }
+
             lblMessage.Text = "Sorry, that function hasn't been "
                            + "implemented yet.";
         }
@@ -91,6 +105,11 @@ namespace drumcenterworld
                 cart.Clear();
                 ListBox1.Items.Clear();
             }
+        }
+
+        protected void ButtonContinue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Prducts.aspx");
         }
     }
 }

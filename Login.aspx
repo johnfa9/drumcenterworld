@@ -13,7 +13,11 @@
             <label>Password</label>&nbsp;
             <asp:TextBox ID="TextBoxPassword" runat="server" Width="152px"></asp:TextBox>
      </div>
-        <p class="text-center" ></p>
+        <p class="text-center" >
+            <asp:Label ID="Label2" runat="server" Text="Role"></asp:Label>
+            <asp:RadioButton ID="RadioButton1" runat="server" Text="Admin" />
+            <asp:RadioButton ID="RadioButton2" runat="server" Text="User" />
+        </p>
 
     <asp:Label ID="Label1" runat="server"></asp:Label>
      <div class="form-group">

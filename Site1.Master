@@ -29,7 +29,7 @@
                 <DynamicMenuStyle BackColor="#B5C7DE" />
                 <DynamicSelectedStyle BackColor="#507CD1" />
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Products.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
                     <asp:MenuItem Text = "Login" Value = "Login" NavigateUrl = "~/Login.aspx" ></asp:MenuItem >
 
                     <asp:MenuItem NavigateUrl = "~/Register.aspx" Text = "Register" Value = "Register" ></asp:MenuItem >

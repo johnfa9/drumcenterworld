@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +12,27 @@ namespace drumcenterworld
 {
     public partial class Products : System.Web.UI.Page
     {
-      
+        SortedList<int, string> lstItems = new SortedList<int, string>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!Page.IsPostBack)
+            {
+                if (Session["UserInfo"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    if (Session["RoleID"].ToString() == "2")
+                    {
+                        Button1.Visible = true;
+                    }
+                    else
+                    {
+                        Button1.Visible = false;
+                    }
+                }
+            }
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -57,14 +75,18 @@ namespace drumcenterworld
                     {
                         cartItem.AddQuantity(Convert.ToInt32(list.SelectedItem.ToString()));
                     }
+                    lstItems.Add(Convert.ToInt32(p.ProductID),(Convert.ToInt32(list.SelectedItem.ToString()) * p.Price).ToString());
                     Response.Redirect("ShoppingCart.aspx", false);
                 }
 
 
             }
 
+        }
 
-
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/AddProduct.aspx");
         }
     }
 }

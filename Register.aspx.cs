@@ -31,7 +31,7 @@ namespace drumcenterworld
                 {
                     string qry = "insert into Users(RoleID,FirstName,LastName,Email,Street,City,StateAbbreviation,ZipCode,UserPassword) values(@RoleID, @FirstName, @LastName, @Email, @Street, @City, @StateAbbreviation, @ZipCode, @UserPassword)";
 
-                    cmd.CommandType=CommandType.Text;
+                    cmd.CommandType = CommandType.Text;
                     cmd.Connection = cn;
                     cmd.CommandText = qry;
                     cmd.Parameters.AddWithValue("@RoleID", 1);
@@ -44,16 +44,21 @@ namespace drumcenterworld
                     cmd.Parameters.AddWithValue("@ZipCode", TextBoxZip.Text);
                     cmd.Parameters.AddWithValue("@UserPassword", TextBoxPassword.Text);
 
+                    if (cn.State == ConnectionState.Open)
+                    {
+                        cn.Close();
+                    }
                     cn.Open();
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-
+                    Response.Write("Message : " + ex.Message);
+                    Response.Write(ex.StackTrace);
                 }
                 finally
                 {
-                    
+
                     if (cn.State == ConnectionState.Open)
                     {
                         cn.Close();

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div>
+    <div>
             <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
         </div>
         <div>
@@ -11,7 +11,7 @@
         </div>
        
         <div>
-            <asp:Button ID="ButtonContinue" runat="server" Text="Continue Shopping" PostBackUrl="~/Products.aspx"/>
+            <asp:Button ID="ButtonContinue" runat="server" Text="Continue Shopping" PostBackUrl="~/Products.aspx" OnClick="ButtonContinue_Click"/>
             <asp:Button ID="ButtonCheckOut" runat="server" Text="Check Out" OnClick="ButtonCheckOut_Click1" />
         </div>
          <div>
