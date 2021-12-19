@@ -74,6 +74,7 @@
       <DependentUpon>drumcenterconnection.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="SampleImages\Canopus 4 piece Neo Drum Set.jpg" />
     <Content Include="SampleImages\Gretsch Custom.jpg" />
     <Content Include="SampleImages\Gretsch USA Custom 4pc DrumSet.jpg" />
@@ -83,13 +84,13 @@
     <Content Include="Admin\ModifyProduct.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="ShoppingCart.aspx" />
+    <Content Include="ShowOrder.aspx" />
     <Content Include="SQL\drumcenterworld.sql" />
     <Content Include="Images\Add.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
-    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AddProduct.aspx.cs">
@@ -159,19 +160,19 @@
     <Compile Include="ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ShowOrder.aspx.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowOrder.aspx.designer.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

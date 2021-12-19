@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="text-align:center"><h1>Available Drum Products</h1></div>
+    <asp:Button ID="Button1" runat="server" Text="Add New Product" OnClick="Button1_Click" />
      <asp:DataList ID="DataList2" runat="server" DataKeyField="ProductID" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList2_ItemCommand" RepeatColumns="3">
         <ItemTemplate>
             

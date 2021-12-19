@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style='text-align:center'>
-         <h2>Located in sunny Hollywood. California</h2>
+         <h2>Located in sunny Hollywood, California</h2>
          <h2>Our drumstore has the best gear in town !!!<p>
          <img src="Images\drumstore.jpg" alt="Drum Center Photo" width="800">  
 

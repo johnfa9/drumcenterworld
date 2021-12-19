@@ -13,6 +13,8 @@ namespace drumcenterworld
 {
     public partial class Login : System.Web.UI.Page
     {
+        
+        
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["drumcenterconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {

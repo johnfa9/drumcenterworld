@@ -17,21 +17,13 @@ namespace drumcenterworld
         {
             if (!Page.IsPostBack)
             {
+                
+                
                 if (Session["UserInfo"] == null)
                 {
                     Response.Redirect("Login.aspx");
                 }
-                else
-                {
-                    if (Session["RoleID"].ToString() == "2")
-                    {
-                        Button1.Visible = true;
-                    }
-                    else
-                    {
-                        Button1.Visible = false;
-                    }
-                }
+               
             }
         }
 
@@ -84,9 +76,6 @@ namespace drumcenterworld
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Admin/AddProduct.aspx");
-        }
+       
     }
 }

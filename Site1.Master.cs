@@ -38,6 +38,10 @@ namespace drumcenterworld
                     Menu1.Items.RemoveAt(1);
                     Menu1.Items.Add(new MenuItem("View Products"));
                     Menu1.FindItem("View Products").NavigateUrl = "~/Products.aspx";
+
+                    Menu1.Items.Add(new MenuItem("View Orders"));
+                    Menu1.FindItem("View Orders").NavigateUrl = "~/ShowOrder.aspx";
+
                     Menu1.Items.Add(new MenuItem("Logout"));
                     Menu1.FindItem("Logout").NavigateUrl = "~/Logout.aspx";
                  

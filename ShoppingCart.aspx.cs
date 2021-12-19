@@ -57,13 +57,6 @@ namespace drumcenterworld
             }
         }
 
-        protected void btnCheckOut_Click(object sender, EventArgs e)
-        {
-            //lblMessage.Text = "Sorry, that function hasn't been "
-            //                    + "implemented yet.";
-           
-
-        }
 
         protected void ButtonRemoveItem_Click(object sender, EventArgs e)
         {
@@ -91,13 +84,7 @@ namespace drumcenterworld
 
             double TotalCost = 0;
 
-           // if (ListBox1.Items.Count > 0)
-           // {
-           //     for (int i=0;i<ListBox1.Items.Count;i++)
-           //     {
-           //         Product product = (Product)ListBox1.Items[i];
-           //     }
-            //}
+          
 
             if (this.cart.Count > 0)
             {
@@ -107,6 +94,10 @@ namespace drumcenterworld
                     CartItem cartItem = this.cart.cartItems[i];
                     this.insertOrderItem(cartItem,(int) neworderid);
                 }
+                //Clear the cart after inserting order items
+                cart.Clear();
+                ListBox1.Items.Clear();
+
             }
 
 
@@ -115,8 +106,7 @@ namespace drumcenterworld
                 Response.Write("Cart Is Empty");
             }
 
-            //lblMessage.Text = "Sorry, that function hasn't been "
-            //               + "implemented yet.";
+           
         }
 
         protected void ButtonEmptyCart_Click(object sender, EventArgs e)
