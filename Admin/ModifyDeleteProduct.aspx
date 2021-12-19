@@ -2,20 +2,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:Button ID="Button1" runat="server" Text="Add New Product" OnClick="Button1_Click" />
     <div style="text-align:center"><h1>Available Drum Products</h1></div>
-     <asp:DataList ID="DataList1" runat="server" DataKeyField="ProductID" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" RepeatColumns="3">
+     <asp:DataList ID="DataList2" runat="server" DataKeyField="ProductID" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList2_ItemCommand" RepeatColumns="3">
         <ItemTemplate>
+            
             <table>
                
                 <tr>    
                 <td style="text-align:center">
-                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Category") %>' Font-Bold="True"></asp:Label>
+                        
+                    <asp:Label ID="Label1" runat="server" Text="Category"></asp:Label>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Category") %>' Font-Bold="True"></asp:TextBox>
+
                   </td>
                 </tr>    
                 <tr>
                      <td style="text-align:center">
-                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Description") %>' Font-Bold="True"></asp:Label>
+                         <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
+                        
+                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Eval("Description") %>'></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -28,25 +33,18 @@
                 <tr>
                     <td style="text-align:center">
                         <asp:Label ID="Label4" runat="server" Text="Price" Font-Bold="True"></asp:Label>
-                        <asp:Label ID="Label5" runat="server" Text=<%# Eval("Price") %> Font-Bold="True"></asp:Label>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Price") %>' Font-Bold="True"></asp:TextBox>
+
+
                     </td>
                 </tr>
 
 
-                <tr>
-                    <td style="text-align:center">
-                        <asp:DropDownList ID="DropDownList1" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                         </asp:DropDownList>
-                    </td>
-                   
-                </tr>
+               
                 <tr>
                     <td style="text-align:center">
                         <asp:ImageButton ID="ImageButton1" runat="server" 
-                            ImageUrl="~/Images/Add.jpg" Width="100px" CommandArgument='<%# Eval("ProductID") %>' CommandName="Cart" />
+                            ImageUrl="~/Images/Delete.jpg" Width="100px" CommandArgument='<%# Eval("ProductID") %>' CommandName="DelProduct" />
                            
                     </td>
                     
