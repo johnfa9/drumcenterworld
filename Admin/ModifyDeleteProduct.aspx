@@ -15,7 +15,8 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Category") %>' Font-Bold="True"></asp:TextBox>
 
                   </td>
-                </tr>    
+                </tr> 
+
                 <tr>
                      <td style="text-align:center">
                          <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
@@ -39,12 +40,28 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td style="text-align:center">
+                        <asp:Label ID="Label3" runat="server" Text="Available Qty" Font-Bold="True"></asp:Label>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("AvailableQty") %>' Font-Bold="True"></asp:TextBox>
 
+
+                    </td>
+                </tr>
                
                 <tr>
                     <td style="text-align:center">
                         <asp:ImageButton ID="ImageButton1" runat="server" 
                             ImageUrl="~/Images/Delete.jpg" Width="100px" CommandArgument='<%# Eval("ProductID") %>' CommandName="DelProduct" />
+                           
+                    </td>
+                    
+                </tr>
+
+                 <tr>
+                    <td style="text-align:center">
+                        <asp:ImageButton ID="ImageButton2" runat="server" 
+                            ImageUrl="~/Images/Modify.jpg" Width="100px" CommandArgument='<%# Eval("ProductID") %>' CommandName="ModProduct" />
                            
                     </td>
                     

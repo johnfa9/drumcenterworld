@@ -26,7 +26,7 @@ namespace drumcenterworld
                         Menu1.Items.Add(new MenuItem("Add Product"));
                         Menu1.FindItem("Add Product").NavigateUrl = "~/Admin/AddProduct.aspx";
                         Menu1.Items.Add(new MenuItem("Modify Product"));
-                        Menu1.FindItem("Modify Product").NavigateUrl = "~/Admin/ModifyProduct.aspx";
+                        Menu1.FindItem("Modify Product").NavigateUrl = "~/Admin/ModifyDeleteProduct.aspx";
                         Menu1.Items.Add(new MenuItem("Logout"));
                         Menu1.FindItem("Logout").NavigateUrl = "~/Logout.aspx";
                       

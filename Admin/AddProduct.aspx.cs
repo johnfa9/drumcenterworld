@@ -9,12 +9,14 @@ using System.Data.SqlClient;
 
 namespace drumcenterworld
 {
-    
+
     public partial class AddProduct : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["drumcenterconnection"].ConnectionString);
+       
         protected void Page_Load(object sender, EventArgs e)
         {
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (Session["UserInfo"] == null)
             {
                 Response.Redirect("../Login.aspx");
@@ -23,57 +25,65 @@ namespace drumcenterworld
             if (role != 2)
             {
                 add.Visible = false;
-                btnUpload.Visible=false;
+                btnUpload.Visible = false;
             }
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (FileUpload1.HasFile)
+
+            
+            
+                try
                 {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
-                    if (fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".JPG")
+                    if (FileUpload1.HasFile)
                     {
-                        lblMessage.Text = "Please select a .jpg file";
+                        string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+                        if (fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".JPG")
+                        {
+                            lblMessage.Text = "Please select a .jpg file";
+                        }
+                        else
+                        {
+                            FileUpload1.SaveAs(Server.MapPath("~/Images/" + FileUpload1.FileName));
+
+                            SqlCommand cmd = new SqlCommand("insert into Product(Category, Description, PhotoLink, AvailableQty, Price) values('" +
+                        DropDownCategory.SelectedValue + "','" +
+                        TextBoxDescription.Text + "','" +
+                        "~/Images/" + FileUpload1.FileName + "','" +
+                        Convert.ToInt16(TextBoxAvailableQty.Text) + "','" +
+                        Convert.ToDecimal(TextBoxPrice.Text) + "'" + ")", con);
+
+                            con.Open();
+                            int Rows = cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            Response.Write("<script language='javascript'>alert('Product Added Successfully !!!!!');</script>");
+
+                            lblMessage.Text = "File Uploaded";
+                            lblMessage.DataBind();
+
+                        }
                     }
                     else
                     {
-                        FileUpload1.SaveAs(Server.MapPath("~/Images/" + FileUpload1.FileName));
+                  
+                            lblMessage.Text = "Please Select a file";
 
-                        SqlCommand cmd = new SqlCommand("insert into Product(Category, Description, PhotoLink, AvailableQty, Price) values('" +
-                    DropDownCategory.SelectedValue + "','" +
-                    TextBoxDescription.Text + "','" +
-                    "~/Images/" + FileUpload1.FileName + "','" +
-                    Convert.ToInt16(TextBoxAvailableQty.Text) + "','" +
-                    Convert.ToDecimal(TextBoxPrice.Text) + "'" + ")", con);
-    
-                        con.Open();
-                        int Rows = cmd.ExecuteNonQuery();
-                        con.Close();
-
-                        Response.Write("<script language='javascript'>alert('Product Added Successfully !!!!!');</script>");
-
-                        //lblMessage.Text = "File Uploaded";
+                        //Response.Redirect("~/Admin/AddProduct.aspx");
                     }
                 }
-                else
+                catch (Exception)
+                { }
+                finally
                 {
-
-                    lblMessage.Text = "Please Select a file";
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
                 }
+               
             }
-            catch (Exception )
-            { }
-            finally
-            {
-                if (con.State == System.Data.ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-            Response.Redirect("../Products.aspx");
         }
-    }
+    
 }

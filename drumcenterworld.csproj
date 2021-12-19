@@ -74,6 +74,11 @@
       <DependentUpon>drumcenterconnection.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="SampleImages\Canopus 4 piece Neo Drum Set.jpg" />
+    <Content Include="SampleImages\Gretsch Custom.jpg" />
+    <Content Include="SampleImages\Gretsch USA Custom 4pc DrumSet.jpg" />
+    <Content Include="SampleImages\Sonor SQ Vintage Maple.jpg" />
+    <Content Include="SampleImages\Sonor Vintage Classic .jpg" />
     <Content Include="Logout.aspx" />
     <Content Include="Admin\ModifyProduct.aspx" />
     <Content Include="Register.aspx" />

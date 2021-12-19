@@ -77,8 +77,8 @@ namespace drumcenterworld
                 }
                 else
                 {
-                    Response.Redirect("~/Products.aspx");
-                    //Response.Redirect("~/Admin/AddProduct.aspx");
+                    //Response.Redirect("~/Products.aspx");
+                    Response.Redirect("~/Admin/ModifyDeleteProduct.aspx");
                 }
             }
             else
