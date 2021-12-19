@@ -1,6 +1,9 @@
 ﻿using drumcenterworld.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -56,8 +59,10 @@ namespace drumcenterworld
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "Sorry, that function hasn't been "
-                            + "implemented yet.";
+            //lblMessage.Text = "Sorry, that function hasn't been "
+            //                    + "implemented yet.";
+           
+
         }
 
         protected void ButtonRemoveItem_Click(object sender, EventArgs e)
@@ -80,22 +85,38 @@ namespace drumcenterworld
 
         protected void ButtonCheckOut_Click1(object sender, EventArgs e)
         {
+
+            int customerid = Convert.ToInt32(Session["UserID"]);
+            int? neworderid= this.insertOrder(customerid);
+
             double TotalCost = 0;
 
-            if (ListBox1.Items.Count > 0)
-            {
-                for (int i=0;i<ListBox1.Items.Count;i++)
-                {
+           // if (ListBox1.Items.Count > 0)
+           // {
+           //     for (int i=0;i<ListBox1.Items.Count;i++)
+           //     {
+           //         Product product = (Product)ListBox1.Items[i];
+           //     }
+            //}
 
+            if (this.cart.Count > 0)
+            {
+                
+                for (int i = 0; i < this.cart.Count; i++)
+                {
+                    CartItem cartItem = this.cart.cartItems[i];
+                    this.insertOrderItem(cartItem,(int) neworderid);
                 }
             }
+
+
             else
             {
                 Response.Write("Cart Is Empty");
             }
 
-            lblMessage.Text = "Sorry, that function hasn't been "
-                           + "implemented yet.";
+            //lblMessage.Text = "Sorry, that function hasn't been "
+            //               + "implemented yet.";
         }
 
         protected void ButtonEmptyCart_Click(object sender, EventArgs e)
@@ -109,7 +130,99 @@ namespace drumcenterworld
 
         protected void ButtonContinue_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Prducts.aspx");
+            Response.Redirect("Products.aspx");
         }
+
+        protected int? insertOrder(int customerorder)
+        {
+            SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["drumcenterconnection"].ConnectionString);
+            cn.Open();
+            SqlCommand cmd;
+            cmd = new SqlCommand();
+            try
+
+            {
+                string qry = "insert into CustomerOrder(CustomerID, LastUpdate) output inserted.OrderID values(@CustomerID, @LastUpdate)";
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                cmd.CommandText = qry;
+                cmd.Parameters.AddWithValue("@CustomerID", customerorder);
+                cmd.Parameters.AddWithValue("@LastUpdate", DateTime.Now);
+                
+
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                cn.Open();
+                
+
+                Int32? newOrderID = (Int32?)cmd.ExecuteScalar();
+                return (int?) newOrderID;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Message : " + ex.Message);
+                Response.Write(ex.StackTrace);
+            }
+            finally
+            {
+
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                cmd.Dispose();
+            }
+            return 0;
+        }
+
+        protected void insertOrderItem(CartItem cartItem, int orderid)
+        {
+            SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["drumcenterconnection"].ConnectionString);
+            cn.Open();
+            SqlCommand cmd;
+            cmd = new SqlCommand();
+            try
+
+            {
+                string qry = "insert into Items(OrderID, ProductID, OrderQty) values(@OrderID, @ProductID, @OrderQty)";
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                cmd.CommandText = qry;
+                cmd.Parameters.AddWithValue("@OrderID", orderid);
+                cmd.Parameters.AddWithValue("@ProductID", cartItem.Product.ProductID);
+                cmd.Parameters.AddWithValue("@OrderQty", cartItem.Quantity);
+
+
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                cn.Open();
+
+
+                cmd.ExecuteScalar();
+               
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Message : " + ex.Message);
+                Response.Write(ex.StackTrace);
+            }
+            finally
+            {
+
+                if (cn.State == ConnectionState.Open)
+                {
+                    cn.Close();
+                }
+                cmd.Dispose();
+            }
+          
+        }
+
     }
 }

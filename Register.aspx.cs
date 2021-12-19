@@ -29,7 +29,9 @@ namespace drumcenterworld
                 try
 
                 {
-                    string qry = "insert into Users(RoleID,FirstName,LastName,Email,Street,City,StateAbbreviation,ZipCode,UserPassword) values(@RoleID, @FirstName, @LastName, @Email, @Street, @City, @StateAbbreviation, @ZipCode, @UserPassword)";
+                    string qry = "insert into Users(RoleID,FirstName,LastName,Email,Street,City," +
+                        "StateAbbreviation,ZipCode,UserPassword) values(@RoleID, @FirstName, @LastName," +
+                        " @Email, @Street, @City, @StateAbbreviation, @ZipCode, @UserPassword)";
 
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = cn;

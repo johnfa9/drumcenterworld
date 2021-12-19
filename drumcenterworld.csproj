@@ -68,13 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AddProduct.aspx" />
+    <Content Include="Admin\ModifyDeleteProduct.aspx" />
     <Content Include="App_Data\drumcenterconnection.mdf" />
     <Content Include="App_Data\drumcenterconnection_log.ldf">
       <DependentUpon>drumcenterconnection.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="Logout.aspx" />
-    <Content Include="ModifyProduct.aspx" />
+    <Content Include="Admin\ModifyProduct.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="ShoppingCart.aspx" />
     <Content Include="SQL\drumcenterworld.sql" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="Admin\AddProduct.aspx.designer.cs">
       <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ModifyDeleteProduct.aspx.cs">
+      <DependentUpon>ModifyDeleteProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ModifyDeleteProduct.aspx.designer.cs">
+      <DependentUpon>ModifyDeleteProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -117,11 +125,11 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CartItemList.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="ModifyProduct.aspx.cs">
+    <Compile Include="Admin\ModifyProduct.aspx.cs">
       <DependentUpon>ModifyProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModifyProduct.aspx.designer.cs">
+    <Compile Include="Admin\ModifyProduct.aspx.designer.cs">
       <DependentUpon>ModifyProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Products.aspx.cs">

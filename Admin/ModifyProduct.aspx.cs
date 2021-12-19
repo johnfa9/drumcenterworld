@@ -11,7 +11,10 @@ namespace drumcenterworld
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserInfo"] == null) //Only an admin can view this page
+            {
+                Response.Redirect("../Login.aspx");
+            }
         }
     }
 }

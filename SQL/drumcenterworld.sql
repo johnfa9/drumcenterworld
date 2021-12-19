@@ -4,6 +4,15 @@
     PRIMARY KEY CLUSTERED ([RoleID] ASC)
 );
 
+CREATE TABLE [dbo].[AdminUsers] (
+    [Id]       INT          NOT NULL,
+    [UserName] VARCHAR (50) NULL,
+    [Password] VARCHAR (50) NULL,
+    [IsAcive]  BIT          DEFAULT ((1)) NULL,
+    [RoleID]   INT          DEFAULT ((2)) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
 CREATE TABLE [dbo].[Users] (
     [UserID]            INT         IDENTITY (1, 1) NOT NULL,
     [RoleID]            INT         NOT NULL,
@@ -56,5 +65,9 @@ CREATE TABLE [dbo].[Items]
 	[OrderQty] INT NOT NULL,
      CONSTRAINT [FK_OrderID] FOREIGN KEY ([OrderID]) REFERENCES [dbo].[CustomerOrder] ([OrderID]) ON DELETE CASCADE,
      CONSTRAINT [FK_ProductID] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Product] ([ProductID]) ON DELETE CASCADE
-)
+);
 
+insert into Role values (1, "Customer");
+insert into Role values (2, "Administrator");
+
+insert into AdminUsers values(1,"admin","admin",1,2);

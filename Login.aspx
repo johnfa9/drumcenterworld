@@ -15,8 +15,8 @@
      </div>
         <p class="text-center" >
             <asp:Label ID="Label2" runat="server" Text="Role"></asp:Label>
-            <asp:RadioButton ID="RadioButton1" runat="server" Text="Admin" />
-            <asp:RadioButton ID="RadioButton2" runat="server" Text="User" />
+            <asp:RadioButton ID="RadioButton1" runat = "server" Text="Admin" GroupName= "usertype"/>
+            <asp:RadioButton ID="RadioButton2" runat = "server" Text="User" GroupName = "usertype"/>
         </p>
 
     <asp:Label ID="Label1" runat="server"></asp:Label>

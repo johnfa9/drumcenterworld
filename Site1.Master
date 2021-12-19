@@ -5,17 +5,14 @@
 <html>
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="StyleSheet1.css"/>
-    <title></title>
+    <title>Drum Center World</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
             text-align: center;
         }
-        .auto-style2 {
-            text-align: left;
-        }
-    </style>
+        </style>
 </head>
 
 <body>
@@ -42,11 +39,13 @@
                 <StaticSelectedStyle BackColor="#507CD1" />
             </asp:Menu>
             </div>
-            <h1 class="auto-style2" style="font:bold">Drum Center World</h1>
+            <h1 class="auto-style1" style="font:bold">Drum Center World</h1>
             <br/>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+</asp:ContentPlaceHolder>
 </body>
 </html>

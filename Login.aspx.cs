@@ -40,7 +40,9 @@ namespace drumcenterworld
             }
             else
             {
-                qry = "Select Email , UserPassword, Role.RoleID from Users left join role on Role.RoleId = Users.RoleId where " +
+               
+
+                qry = "Select UserID, Email , UserPassword, Role.RoleID from Users left join role on Role.RoleId = Users.RoleId where " +
               "Email='" + TextBoxEmail.Text + "' and " +
               "UserPassword='" + TextBoxPassword.Text + "'";
 
@@ -58,6 +60,8 @@ namespace drumcenterworld
                 int RoleId = Convert.ToInt32(dt.Rows[0]["RoleId"]);
                 //!= null ? Convert.ToInt32(dt.Rows[0]["RoleId"]) : -1;
                 Session["UserInfo"] = TextBoxEmail.Text;
+                //Session["UserID"] = dt.Rows[0]["UserID"];  
+                //String output= Session["UserID"].ToString();
                 System.Web.HttpContext.Current.Session["Role"] = dt.Rows[0]["RoleID"];
                 Session["RoleID"] = dt.Rows[0]["RoleID"].ToString();
                 var menu = Page.Master.FindControl("Menu1") as Menu;
@@ -68,6 +72,7 @@ namespace drumcenterworld
                     // menu.Items.RemoveAt(2);
                     // menu.Items.RemoveAt(1);
                     //menu.Items.Add(4);
+                    Session["UserID"] = dt.Rows[0]["UserID"];
                     Response.Redirect("~/Products.aspx");
                 }
                 else

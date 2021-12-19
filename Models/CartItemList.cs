@@ -7,7 +7,7 @@ namespace drumcenterworld.Models
 {
     public class CartItemList
     {
-        private List<CartItem> cartItems;
+        public List<CartItem> cartItems;
 
         public CartItemList()
         {

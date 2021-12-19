@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="drumcenterworld.Products" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ModifyDeleteProduct.aspx.cs" Inherits="drumcenterworld.Admin.ModifyDeleteProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Button ID="Button1" runat="server" Text="Add New Product" OnClick="Button1_Click" />
+     <asp:Button ID="Button1" runat="server" Text="Add New Product" OnClick="Button1_Click" />
     <div style="text-align:center"><h1>Available Drum Products</h1></div>
      <asp:DataList ID="DataList1" runat="server" DataKeyField="ProductID" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" RepeatColumns="3">
         <ItemTemplate>
@@ -61,6 +61,7 @@
     </asp:DataList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:drumcenterconnection %>" SelectCommand="SELECT * FROM [Product]"></asp:SqlDataSource>
 
-
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>
 
