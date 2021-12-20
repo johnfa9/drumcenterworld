@@ -49,25 +49,22 @@ CREATE TABLE [dbo].[Product]
     primary key CLUSTERED ([ProductID] ASC),
 );
 
-CREATE TABLE [dbo].[CustomerOrder]
-(
-	[OrderID]		INT IDENTITY (1, 1) NOT NULL,
-	[CustomerID]	INT					NOT NULL,
-	[LastUpdate]	DATE				NOT NULL,
-	PRIMARY KEY CLUSTERED ([OrderID] ASC),
-    CONSTRAINT [FK_CustomerID] FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customer] ([CustomerID])
+
+CREATE TABLE [dbo].[CustomerOrder] (
+    [OrderID]    INT  IDENTITY (1, 1) NOT NULL,
+    [CustomerID] INT  NOT NULL,
+    [LastUpdate] DATE NOT NULL,
+    PRIMARY KEY CLUSTERED ([OrderID] ASC)
 );
 
-CREATE TABLE [dbo].[Items]
-(
-	[OrderID] INT NOT NULL,
-	[ProductID] INT  NOT NULL,
-	[OrderQty] INT NOT NULL,
-     CONSTRAINT [FK_OrderID] FOREIGN KEY ([OrderID]) REFERENCES [dbo].[CustomerOrder] ([OrderID]) ON DELETE CASCADE,
-     CONSTRAINT [FK_ProductID] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Product] ([ProductID]) ON DELETE CASCADE
+CREATE TABLE [dbo].[Items] (
+    [OrderID]   INT NOT NULL,
+    [ProductID] INT NOT NULL,
+    [OrderQty]  INT NOT NULL,
+    CONSTRAINT [FK_ProductID] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Product] ([ProductID]) ON DELETE CASCADE
 );
 
-insert into Role values (1, "Customer");
-insert into Role values (2, "Administrator");
+insert into Role values ('Customer');
+insert into Role values ('Admin');
 
-insert into AdminUsers values(1,"admin","admin",1,2);
+insert into AdminUsers (Id, UserName, Password, IsAcive, RoleID) values(1, 'admin','admin',1,2);

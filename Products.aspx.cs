@@ -17,19 +17,15 @@ namespace drumcenterworld
         {
             if (!Page.IsPostBack)
             {
-                
-                
                 if (Session["UserInfo"] == null)
                 {
                     Response.Redirect("Login.aspx");
-                }
-               
+                }  
             }
         }
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            //Session["addItem"] = "true";
             if (e.CommandName == "Cart")
             {
                 DropDownList list = (DropDownList)(e.Item.FindControl("DropDownList1"));
@@ -61,13 +57,14 @@ namespace drumcenterworld
                     if (cartItem == null)
                     {
                         cart.AddItem(p,
-                                     Convert.ToInt32(list.SelectedItem.ToString()));
+                        Convert.ToInt32(list.SelectedItem.ToString()));
                     }
                     else
                     {
                         cartItem.AddQuantity(Convert.ToInt32(list.SelectedItem.ToString()));
                     }
-                    lstItems.Add(Convert.ToInt32(p.ProductID),(Convert.ToInt32(list.SelectedItem.ToString()) * p.Price).ToString());
+                    lstItems.Add(Convert.ToInt32(p.ProductID),(Convert.ToInt32(list.SelectedItem.ToString()) * 
+                        p.Price).ToString());
                     Response.Redirect("ShoppingCart.aspx", false);
                 }
 

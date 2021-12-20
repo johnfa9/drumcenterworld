@@ -16,10 +16,7 @@ namespace drumcenterworld
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //clear boxes
-            TextBoxDescription.Text = "";
-            TextBoxPrice.Text = "";
-            TextBoxAvailableQty.Text = "";
+            
 
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (Session["UserInfo"] == null)

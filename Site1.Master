@@ -20,7 +20,9 @@
     <form id="form1" runat="server">
         <div>
             <div class="auto-style1">
-            <asp:Menu ID="Menu1" runat="server" Font-Bold="True" Font-Size="Medium" Orientation="Horizontal" Width="100%" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Underline="True" ForeColor="#284E98" StaticSubMenuIndent="10px" Height="40px">
+            <asp:Menu ID="Menu1" runat="server" Font-Bold="True" Font-Size="Medium" Orientation="Horizontal" 
+                Width="100%" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" 
+                Font-Underline="True" ForeColor="#284E98" StaticSubMenuIndent="10px" Height="40px">
                 <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
                 <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                 <DynamicMenuStyle BackColor="#B5C7DE" />

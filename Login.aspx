@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="drumcenterworld.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" 
+    CodeBehind="Login.aspx.cs" Inherits="drumcenterworld.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
    
 </asp:Content>
@@ -11,12 +12,14 @@
     </div>
      <div class="form-group">
             <label>Password</label>&nbsp;
-            <asp:TextBox ID="TextBoxPassword" runat="server" TextMode="Password" Width="152px"></asp:TextBox>
+            <asp:TextBox ID="TextBoxPassword" runat="server" TextMode="Password" 
+                Width="152px"></asp:TextBox>
      </div>
         <p class="text-center" >
             <asp:Label ID="Label2" runat="server" Text="Role"></asp:Label>
             <asp:RadioButton ID="RadioButton1" runat = "server" Text="Admin" GroupName= "usertype" />
-            <asp:RadioButton ID="RadioButton2" runat = "server" Text="Customer" GroupName = "usertype" Checked="true" />
+            <asp:RadioButton ID="RadioButton2" runat = "server" Text="Customer" 
+                GroupName = "usertype" Checked="true" />
         </p>
 
     <asp:Label ID="Label1" runat="server"></asp:Label>

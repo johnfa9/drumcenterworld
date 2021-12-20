@@ -48,14 +48,8 @@ namespace drumcenterworld
                 }
 
                 else 
-                //Menu1.Items.Add(new MenuItem("Login"));
-                //Menu1.FindItem("Home").NavigateUrl = "~/Login.aspx";
-                //Menu1.Items.Add(new MenuItem("Register"));
-                //Menu1.FindItem("Register").NavigateUrl = "~/Register.aspx";
+                
                 {
-                    // < asp:MenuItem Text = "Login" Value = "Login" NavigateUrl = "~/Login.aspx" ></ asp:MenuItem >
-
-                    //< asp:MenuItem NavigateUrl = "~/Register.aspx" Text = "Register" Value = "Register" ></ asp:MenuItem >
                     MenuItemCollection menuItems = Menu1.Items;
                     MenuItem menuItem = new MenuItem();
 
@@ -64,12 +58,7 @@ namespace drumcenterworld
                         if (item.Text!="Home")
                         menuItems.Remove(menuItem);
                     }
-                    //Menu1.Items.Add(new MenuItem("Login"));
-                    //Menu1.FindItem("Login").NavigateUrl = "~/Login.aspx";
-                    //Menu1.Items.Add(new MenuItem("Register"));
-                    //Menu1.FindItem("Register").NavigateUrl = "~/Register.aspx";
-
-
+                    
                 }
                    
             }

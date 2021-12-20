@@ -57,7 +57,6 @@ namespace drumcenterworld
             }
         }
 
-
         protected void ButtonRemoveItem_Click(object sender, EventArgs e)
         {
             if (cart.Count > 0)
@@ -84,8 +83,6 @@ namespace drumcenterworld
 
             double TotalCost = 0;
 
-          
-
             if (this.cart.Count > 0)
             {
                 
@@ -100,13 +97,10 @@ namespace drumcenterworld
                 Response.Redirect("ShowOrder.aspx");
             }
 
-
             else
             {
                 Response.Write("Cart Is Empty");
-            }
-
-           
+            }           
         }
 
         protected void ButtonEmptyCart_Click(object sender, EventArgs e)
@@ -132,7 +126,8 @@ namespace drumcenterworld
             try
 
             {
-                string qry = "insert into CustomerOrder(CustomerID, LastUpdate) output inserted.OrderID values(@CustomerID, @LastUpdate)";
+                string qry = "insert into CustomerOrder(CustomerID, LastUpdate) output " +
+                    "inserted.OrderID values(@CustomerID, @LastUpdate)";
 
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;
@@ -177,7 +172,8 @@ namespace drumcenterworld
             try
 
             {
-                string qry = "insert into Items(OrderID, ProductID, OrderQty) values(@OrderID, @ProductID, @OrderQty)";
+                string qry = "insert into Items(OrderID, ProductID, OrderQty) " +
+                    "values(@OrderID, @ProductID, @OrderQty)";
 
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = cn;

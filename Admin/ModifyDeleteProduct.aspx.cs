@@ -52,28 +52,6 @@ namespace drumcenterworld.Admin
                     DropDownList list = (DropDownList)(e.Item.FindControl("DropDownList1"));
 
                  
-
-
-
-                    //get row from SqlDataSource based on value in drop-down list
-                    // DataView productsTable = (DataView)
-
-
-                    // SqlDataSource1.Select(DataSourceSelectArguments.Empty);
-                    //productsTable.RowFilter =
-                    //     "ProductID = '" + e.CommandArgument + "'";
-                    //DataRowView row = productsTable[0];
-
-                    //create a new product object and load with data from row
-
-                    //Product p = new Product();
-                    //p.ProductID = row["ProductID"].ToString();
-                    //p.Category = row["Category"].ToString();
-                    //p.Description = row["Description"].ToString();
-                    //p.AvailableQty = (Int32)row["AvailableQty"];
-                    //p.Price = (decimal)row["Price"];
-
-
                     try
 
                     {
