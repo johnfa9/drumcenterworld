@@ -11,7 +11,7 @@
     </div>
      <div class="form-group">
             <label>Password</label>&nbsp;
-            <asp:TextBox ID="TextBoxPassword" runat="server" Width="152px"></asp:TextBox>
+            <asp:TextBox ID="TextBoxPassword" runat="server" TextMode="Password" Width="152px"></asp:TextBox>
      </div>
         <p class="text-center" >
             <asp:Label ID="Label2" runat="server" Text="Role"></asp:Label>

@@ -52,6 +52,7 @@ namespace drumcenterworld
                     }
                     cn.Open();
                     cmd.ExecuteNonQuery();
+                    Response.Redirect("Login.aspx");
                 }
                 catch (Exception ex)
                 {
@@ -67,59 +68,6 @@ namespace drumcenterworld
                     }
                     cmd.Dispose();
                 }
-
-               
-
-               /* SqlCommand cmd = new SqlCommand("insert into Users(RoleID, FirstName, LastName, Email, Street, City, StateAbbreviation, ZipCode, UserPassword) values('" +
-                1 + "','" +
-                TextBoxFirstName.Text + "','" +
-                TextBoxLastName.Text + "','" +
-                TextBoxEmail.Text + "','" +
-                TextBoxStreet.Text + "','" +
-                TextBoxCity.Text + "','" +
-                TextBoxState.Text + "','" +
-                TextBoxZip.Text + "','" +
-                TextBoxPassword.Text +
-
-                "'" + ")", con);
-                int Rows = cmd.ExecuteNonQuery(); */
-
-
-
-                        //SqlCommand cmd = new SqlCommand("insert into Customer(CustomerID, JoinDate, BillingMethod) values('" +
-
-                        //using (con)
-                        //{
-                        // Create a SqlDataAdapter based on a SELECT query.
-                        //  SqlCommand adapter =
-                        //         new SqlDataAdapter("SELECT CategoryID, CategoryName FROM dbo.Customer", con);
-
-                        //Create the SqlCommand to execute the stored procedure.
-                        //adapter.InsertCommand = new SqlCommand("dbo.InsertCustomer",
-                        //  con);
-                        //adapter.InsertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-                        // Add the parameter for the CategoryName. Specifying the
-                        // ParameterDirection for an input parameter is not required.
-
-
-
-                        //adapter.InsertCommand.Parameters.Add(
-                        //   new SqlParameter("@JoinDate", SqlDbType.Date,
-                        //   Now();
-                        //adapter.InsertCommand.Parameters.Add(
-                        //new SqlParameter("@BillingMethod", SqlDbType.NChar, 50,
-                        //DropDownListBilling.SelectedValue));
-
-                        //SqlParameter parameter =
-                        //adapter.InsertCommand.Parameters.Add(
-                        //"@Identity", SqlDbType.Int, 0, "UserID");
-                        //parameter.Direction = ParameterDirection.Output;
-
-
-                        //}
-
-
                     cn.Close();
             }
         }

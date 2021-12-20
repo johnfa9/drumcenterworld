@@ -97,7 +97,7 @@ namespace drumcenterworld
                 //Clear the cart after inserting order items
                 cart.Clear();
                 ListBox1.Items.Clear();
-
+                Response.Redirect("ShowOrder.aspx");
             }
 
 

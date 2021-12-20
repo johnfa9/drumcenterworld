@@ -16,6 +16,11 @@ namespace drumcenterworld
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            //clear boxes
+            TextBoxDescription.Text = "";
+            TextBoxPrice.Text = "";
+            TextBoxAvailableQty.Text = "";
+
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (Session["UserInfo"] == null)
             {
@@ -31,59 +36,53 @@ namespace drumcenterworld
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-
-            
-            
-                try
+            try
+            {
+                if (FileUpload1.HasFile)
                 {
-                    if (FileUpload1.HasFile)
+                    string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+                    if (fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".JPG")
                     {
-                        string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
-                        if (fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".JPG")
-                        {
-                            lblMessage.Text = "Please select a .jpg file";
-                        }
-                        else
-                        {
-                            FileUpload1.SaveAs(Server.MapPath("~/Images/" + FileUpload1.FileName));
+                        lblMessage.Text = "Please select a .jpg file";
+                    }
+                    else
+                    {
+                        FileUpload1.SaveAs(Server.MapPath("~/Images/" + FileUpload1.FileName));
 
-                            SqlCommand cmd = new SqlCommand("insert into Product(Category, Description, PhotoLink, AvailableQty, Price) values('" +
+                        SqlCommand cmd = new SqlCommand("insert into Product(Category, Description, " +
+                            "PhotoLink, AvailableQty, Price) values('" +
                         DropDownCategory.SelectedValue + "','" +
                         TextBoxDescription.Text + "','" +
                         "~/Images/" + FileUpload1.FileName + "','" +
                         Convert.ToInt16(TextBoxAvailableQty.Text) + "','" +
                         Convert.ToDecimal(TextBoxPrice.Text) + "'" + ")", con);
 
-                            con.Open();
-                            int Rows = cmd.ExecuteNonQuery();
-                            con.Close();
-
-                            Response.Write("<script language='javascript'>alert('Product Added Successfully !!!!!');</script>");
-
-                            lblMessage.Text = "File Uploaded";
-                            lblMessage.DataBind();
-
-                        }
-                    }
-                    else
-                    {
-                  
-                            lblMessage.Text = "Please Select a file";
-
-                        //Response.Redirect("~/Admin/AddProduct.aspx");
-                    }
-                }
-                catch (Exception)
-                { }
-                finally
-                {
-                    if (con.State == System.Data.ConnectionState.Open)
-                    {
+                        con.Open();
+                        int Rows = cmd.ExecuteNonQuery();
                         con.Close();
+
+                        Response.Write("<script language='javascript'>alert('Product Added Successfully !!!!!');</script>");
+
+                        lblMessage.Text = "File Uploaded";
+                        lblMessage.DataBind();
                     }
                 }
-               
+                else
+                {
+                        lblMessage.Text = "Please Select a file";
+                }
             }
+            catch (Exception)
+            { }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+               
         }
+    }
     
 }
